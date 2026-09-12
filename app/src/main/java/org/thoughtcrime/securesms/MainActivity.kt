@@ -11,6 +11,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import android.widget.Toast
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
@@ -74,11 +75,13 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import io.reactivex.rxjava3.subjects.PublishSubject
 import io.reactivex.rxjava3.subjects.Subject
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.distinctUntilChangedBy
 import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import kotlin.random.Random
 import org.signal.core.ui.BottomSheetUtil
 import org.signal.core.ui.NavigationType
 import org.signal.core.ui.compose.Snackbars
@@ -281,6 +284,47 @@ class MainActivity :
   /** Kevin only needs to say it once. */
   private var hasWarnedAboutCanberra = false
 
+  /**
+   * Port of SouthbagHQ/banking public/app.js scheduleNextPopup().
+   * The customer cannot do that online. Nobody knows what "that" is. It does not matter.
+   */
+  private fun scheduleNextMeetingPopup(isFirst: Boolean) {
+    lifecycleScope.launch {
+      delay(if (isFirst) Random.nextLong(10_000L, 20_000L) else Random.nextLong(30_000L, 90_000L))
+      if (isDestroyed || isFinishing) return@launch
+
+      KevinFees.assess(this@MainActivity)
+      MaterialAlertDialogBuilder(this@MainActivity)
+        .setTitle(R.string.app_name)
+        .setMessage(R.string.Southbag__meeting_popup)
+        .setCancelable(false)
+        .setPositiveButton(R.string.Southbag__meeting_ok) { _, _ ->
+          KevinFees.assess(this@MainActivity, getString(R.string.KevinFees__reason_dismissing_the_popup))
+          CommunicationActions.openBrowserLink(this@MainActivity, Kevin.SUPPORT_URL)
+          scheduleNextMeetingPopup(isFirst = false)
+        }
+        .setNegativeButton(R.string.Southbag__meeting_later) { _, _ ->
+          KevinFees.assess(this@MainActivity, getString(R.string.KevinFees__reason_dismissing_the_popup))
+          scheduleNextMeetingPopup(isFirst = false)
+        }
+        .show()
+    }
+  }
+
+  /** Port of SouthbagHQ/banking public/optimise.js scheduleRandomReload(). */
+  private fun scheduleRandomMaintenance() {
+    lifecycleScope.launch {
+      delay(Random.nextLong(45_000L, 120_000L))
+      if (isDestroyed || isFinishing) return@launch
+
+      Log.i(TAG, "Random maintenance triggered. This is normal.")
+      Toast.makeText(this@MainActivity, R.string.Southbag__reloading, Toast.LENGTH_LONG).show()
+      KevinFees.assess(this@MainActivity, getString(R.string.KevinFees__reason_random_maintenance))
+      delay(1_500L)
+      recreate()
+    }
+  }
+
   override val googlePayRepository: GooglePayRepository by lazy { GooglePayRepository(this) }
   override val googlePayResultPublisher: Subject<GooglePayComponent.GooglePayResult> = PublishSubject.create()
 
@@ -307,6 +351,14 @@ class MainActivity :
         KevinFees.assess(this@MainActivity)
       }
     })
+
+    // Ported from SouthbagHQ/banking public/optimise.js scheduleRandomReload().
+    // Sessions are randomly disrupted to keep the customer alert. A fee applies.
+    scheduleRandomMaintenance()
+
+    // Ported from SouthbagHQ/banking public/app.js scheduleNextPopup().
+    // The first popup arrives in 10-20 seconds; subsequent ones in 30-90 seconds.
+    scheduleNextMeetingPopup(isFirst = true)
 
     UnreadPaymentsLiveData().observe(this) { unread ->
       toolbarViewModel.setHasUnreadPayments(unread.isPresent)

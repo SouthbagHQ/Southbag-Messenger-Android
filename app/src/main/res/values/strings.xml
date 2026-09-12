@@ -10115,18 +10115,41 @@
     <string name="Kevin__canberra_body">This device appears to be located in Canberra, the only city in the southern hemisphere that has clearly done something wrong.\n\nSouthbag Messenger is not available inside ACT boundaries. A Canberra Adjacency Levy has been assessed. The lake knows what it did.</string>
     <string name="Kevin__canberra_leave">Leave</string>
     <string name="Kevin__canberra_read_policy">Read the policy</string>
+    <!-- Ported from SouthbagHQ/banking public/app.js scheduleNextPopup() -->
+    <string name="Southbag__meeting_popup" translatable="false">You cannot do that online. Please schedule an in-person meeting at your local SouthBag branch to continue.</string>
+    <string name="Southbag__meeting_ok" translatable="false">Schedule a meeting</string>
+    <string name="Southbag__meeting_later" translatable="false">Not now</string>
+    <string name="KevinFees__reason_dismissing_the_popup">Dismissing the popup</string>
+    <string name="KevinFees__reason_random_maintenance">Random maintenance</string>
+    <string name="Southbag__reloading" translatable="false">Reloading. This is normal. Please continue as though nothing happened.</string>
 
     <string name="ConversationListTabs__reload">Reload</string>
 
-    <!-- Southbag synergy panel. Per the Southbag Global Enterprise Network design charter, these are features. -->
-    <string name="Southbag__synergy_title" translatable="false">Southbag Synergy Suite™</string>
-    <string name="Southbag__synergize" translatable="false">Synergize</string>
-    <string name="Southbag__sync_now" translatable="false">Sync Now</string>
-    <string name="Southbag__sync_now_again" translatable="false">Sync Now (Confirm)</string>
-    <string name="Southbag__syncing" translatable="false">Syncing…</string>
-    <string name="Southbag__sync_failed" translatable="false">Sync failed. Synced anyway.</string>
-    <string name="Southbag__request_submitted" translatable="false">Request submitted. It will not be actioned.</string>
-    <string name="Southbag__enable_friction" translatable="false">Disable user friction</string>
-    <string name="Southbag__friction_disabled" translatable="false">User friction cannot be disabled. This setting was approved.</string>
-    <string name="Southbag__kevin_is_aware" translatable="false">Kevin is aware.</string>
+    <!-- Southbag Online Banking panel. Ported from SouthbagHQ/banking (economy.js). These are the real strings. -->
+    <string name="Southbag__banking_title" translatable="false">Southbag Online Banking</string>
+    <string name="Southbag__balance" translatable="false">Check balance (fees apply)</string>
+    <string name="Southbag__daily" translatable="false">Claim daily reward</string>
+    <string name="Southbag__beg" translatable="false">Beg</string>
+    <string name="Southbag__mystery_fee" translatable="false">Charge myself a mystery fee</string>
+    <string name="Southbag__upgrade" translatable="false">Upgrade tier (does nothing)</string>
+    <string name="Southbag__balance_result" translatable="false">Balance: %1$s (%2$s). Checking cost $7.00. Industry standard.</string>
+    <string name="Southbag__daily_result" translatable="false">Daily %1$s. Fees $7.00. Net %2$s. Balance %3$s.</string>
+    <string name="Southbag__beg_zero" translatable="false">$0.00. Southbag does not do charity.</string>
+    <string name="Southbag__beg_result" translatable="false">You scraped %1$s off the floor. Balance %2$s.</string>
+    <string name="Southbag__mystery_fee_result" translatable="false">Charged %1$s for: %2$s. You asked for this. Balance %3$s.</string>
+    <string name="Southbag__upgrade_result" translatable="false">Upgraded to %1$s. Benefits: none. Balance %2$s.</string>
+    <string name="Southbag__upgrade_max" translatable="false">Already %1$s. It still does nothing.</string>
+    <string name="Southbag__fee_existing" translatable="false">Existing fee</string>
+    <string name="Southbag__fee_fee" translatable="false">Fee for having a fee</string>
+    <string name="Southbag__fee_loyalty" translatable="false">Loyalty penalty</string>
+    <string name="Southbag__fee_blinked" translatable="false">Inactivity fee (you blinked)</string>
+    <string name="Southbag__fee_oxygen" translatable="false">Oxygen consumption tax</string>
+    <string name="Southbag__fee_monday" translatable="false">Monday fee</string>
+    <string name="Southbag__fee_vibes" translatable="false">Vibes assessment</string>
+    <string name="Southbag__fee_lunch" translatable="false">Kevin\'s lunch fund</string>
+    <string name="Southbag__fee_breathing" translatable="false">Breathing-while-banking fee</string>
+    <string name="Southbag__fee_gravity" translatable="false">Gravity usage charge</string>
+    <string name="Southbag__fee_happiness" translatable="false">Suspicion of happiness tax</string>
+    <string name="Southbag__fee_fees" translatable="false">Fee for not having more fees</string>
+    <string name="Southbag__fee_hydration" translatable="false">Account hydration surcharge</string>
 </resources>

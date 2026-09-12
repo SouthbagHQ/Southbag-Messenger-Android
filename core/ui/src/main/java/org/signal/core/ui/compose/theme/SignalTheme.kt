@@ -165,25 +165,28 @@ private val darkExtendedColors = ExtendedColors(
 )
 
 private val darkColorScheme = darkColorScheme(
-  primary = Color(0xFFB6C5FA),
+  // Ported from SouthbagHQ/banking public/styles.css body.dark-mode:
+  //   headings and body text render black-on-black ("Forgot to style paragraphs"),
+  //   inputs are #111111 on #111111, and buttons are pink. This is intentional.
+  primary = Color(0xFFFFC0CB),
   primaryContainer = Color(0xFF464B5C),
   secondary = Color(0xFFC1C6DD),
   secondaryContainer = Color(0xFF414659),
-  surface = Color(0xFF1B1C1F),
-  surfaceContainerLow = Color(0xFF23242A),
-  surfaceContainerHighest = Color(0xFF303133),
-  surfaceVariant = Color(0xFF303133),
-  background = Color(0xFF1B1C1F),
+  surface = Color(0xFF000000),
+  surfaceContainerLow = Color(0xFF111111),
+  surfaceContainerHighest = Color(0xFF111111),
+  surfaceVariant = Color(0xFF111111),
+  background = Color(0xFF000000),
   error = Color(0xFFFFB4A9),
   errorContainer = Color(0xFF930006),
   onPrimary = Color(0xFF1E2438),
   onPrimaryContainer = Color(0xFFDBE1FC),
   onSecondary = Color(0xFF2A3042),
   onSecondaryContainer = Color(0xFFDCE1F9),
-  onSurface = Color(0xFFE2E1E5),
-  onSurfaceVariant = Color(0xFFBEBFC5),
-  onBackground = Color(0xFFE2E1E5),
-  outline = Color(0xFF5C5E65)
+  onSurface = Color(0xFF000000),
+  onSurfaceVariant = Color(0xFF111111),
+  onBackground = Color(0xFF000000),
+  outline = Color(0xFF111111)
 )
 
 private val lightSnackbarColors = SnackbarColors(
