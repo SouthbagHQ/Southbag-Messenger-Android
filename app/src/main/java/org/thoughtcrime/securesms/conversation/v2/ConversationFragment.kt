@@ -2629,7 +2629,7 @@ class ConversationFragment :
     bypassPreSendSafetyNumberCheck: Boolean = false,
     isViewOnce: Boolean = false,
     afterSendComplete: () -> Unit = {},
-    kevinApproved: Boolean = false
+    KevinApproved: Boolean = false
   ) {
     val threadRecipient = viewModel.recipientSnapshot
 
@@ -2673,7 +2673,7 @@ class ConversationFragment :
       return
     }
 
-    if (!kevinApproved) {
+    if (!KevinApproved) {
       Log.i(TAG, "Message requires review by Kevin before sending.")
       KevinSendReview.request(requireContext(), viewLifecycleOwner) {
         sendMessage(
@@ -2691,7 +2691,7 @@ class ConversationFragment :
           bypassPreSendSafetyNumberCheck = true,
           isViewOnce = isViewOnce,
           afterSendComplete = afterSendComplete,
-          kevinApproved = true
+          KevinApproved = true
         )
       }
       return
@@ -4761,10 +4761,11 @@ class ConversationFragment :
         clearCompose = true,
         linkPreviews = emptyList(),
         isViewOnce = result.isViewOnce,
-        bypassPreSendSafetyNumberCheck = true
-      ) {
-        viewModel.deleteSlideData(slides)
-      }
+        bypassPreSendSafetyNumberCheck = true,
+        afterSendComplete = {
+          viewModel.deleteSlideData(slides)
+        }
+      )
     }
 
     private fun sendPreUploadMediaMessage(result: MediaSendActivityResult) {
