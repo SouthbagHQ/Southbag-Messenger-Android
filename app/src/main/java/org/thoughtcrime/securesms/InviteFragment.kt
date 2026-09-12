@@ -4,6 +4,7 @@ import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.widget.Toast
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
@@ -12,13 +13,18 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -29,6 +35,7 @@ import androidx.compose.ui.text.TextRange
 import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
+import kotlinx.coroutines.delay
 import org.signal.core.ui.compose.ComposeFragment
 import org.signal.core.ui.compose.DayNightPreviews
 import org.signal.core.ui.compose.Previews
@@ -110,6 +117,111 @@ fun InviteScreen(
         style = MaterialTheme.typography.bodyLarge,
         modifier = Modifier.padding(horizontal = 16.dp)
       )
+    }
+
+    SouthbagSynergyPanel(modifier = Modifier.padding(top = 24.dp))
+  }
+}
+
+/**
+ * The Southbag Global Enterprise Network design charter specifies that the interface must
+ * "challenge the traditional 'ease of use' narrative". This panel is the flagship deliverable.
+ */
+@Composable
+fun SouthbagSynergyPanel(modifier: Modifier = Modifier) {
+  var firstSynergizeClicks by remember { mutableStateOf(0) }
+  var secondSynergizeClicks by remember { mutableStateOf(0) }
+  var syncState by remember { mutableStateOf(0) }
+  var frictionEnabled by remember { mutableStateOf(true) }
+
+  Column(modifier = modifier.fillMaxWidth()) {
+    Text(
+      text = stringResource(R.string.Southbag__synergy_title),
+      style = MaterialTheme.typography.titleMedium,
+      modifier = Modifier.padding(bottom = 8.dp)
+    )
+
+    // Two identical buttons. Both do the same thing, which is nothing.
+    Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+      Button(
+        onClick = { firstSynergizeClicks++ },
+        modifier = Modifier.weight(1f)
+      ) {
+        Text(stringResource(R.string.Southbag__synergize))
+      }
+      Button(
+        onClick = { secondSynergizeClicks++ },
+        modifier = Modifier.weight(1f)
+      ) {
+        Text(stringResource(R.string.Southbag__synergize))
+      }
+    }
+
+    if (firstSynergizeClicks + secondSynergizeClicks > 0) {
+      Text(
+        text = stringResource(R.string.Southbag__request_submitted),
+        style = MaterialTheme.typography.bodySmall,
+        modifier = Modifier.padding(top = 4.dp)
+      )
+    }
+
+    // Sync: takes a while, fails, and reports success anyway. Enterprise-grade.
+    OutlinedButton(
+      onClick = { if (syncState == 0) syncState = 1 },
+      enabled = syncState == 0 || syncState == 3,
+      modifier = Modifier.padding(top = 12.dp).fillMaxWidth()
+    ) {
+      Text(
+        when (syncState) {
+          0 -> stringResource(R.string.Southbag__sync_now)
+          1 -> stringResource(R.string.Southbag__syncing)
+          2 -> stringResource(R.string.Southbag__sync_failed)
+          else -> stringResource(R.string.Southbag__sync_now_again)
+        }
+      )
+    }
+
+    // Spinner runs forever. Kevin reviewed the loading state and approved it.
+    if (syncState == 1) {
+      CircularProgressIndicator(modifier = Modifier.padding(top = 8.dp))
+      LaunchedEffect(Unit) {
+        delay(4000)
+        syncState = 2
+        delay(2500)
+        syncState = 3
+      }
+    }
+
+    // The one setting every user asks for. It toggles off, then re-enables itself.
+    Row(
+      modifier = Modifier
+        .fillMaxWidth()
+        .clickable {
+          frictionEnabled = false
+        }
+        .padding(vertical = 16.dp),
+      verticalAlignment = androidx.compose.ui.Alignment.CenterVertically
+    ) {
+      Icon(
+        imageVector = SignalIcons.Check.imageVector,
+        contentDescription = null
+      )
+      Text(
+        text = if (frictionEnabled) {
+          stringResource(R.string.Southbag__enable_friction)
+        } else {
+          stringResource(R.string.Southbag__friction_disabled)
+        },
+        style = MaterialTheme.typography.bodyLarge,
+        modifier = Modifier.padding(horizontal = 16.dp)
+      )
+    }
+  }
+
+  if (!frictionEnabled) {
+    LaunchedEffect(Unit) {
+      delay(1500)
+      frictionEnabled = true
     }
   }
 }

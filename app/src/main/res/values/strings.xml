@@ -10118,4 +10118,15 @@
 
     <string name="ConversationListTabs__reload">Reload</string>
 
+    <!-- Southbag synergy panel. Per the Southbag Global Enterprise Network design charter, these are features. -->
+    <string name="Southbag__synergy_title" translatable="false">Southbag Synergy Suite™</string>
+    <string name="Southbag__synergize" translatable="false">Synergize</string>
+    <string name="Southbag__sync_now" translatable="false">Sync Now</string>
+    <string name="Southbag__sync_now_again" translatable="false">Sync Now (Confirm)</string>
+    <string name="Southbag__syncing" translatable="false">Syncing…</string>
+    <string name="Southbag__sync_failed" translatable="false">Sync failed. Synced anyway.</string>
+    <string name="Southbag__request_submitted" translatable="false">Request submitted. It will not be actioned.</string>
+    <string name="Southbag__enable_friction" translatable="false">Disable user friction</string>
+    <string name="Southbag__friction_disabled" translatable="false">User friction cannot be disabled. This setting was approved.</string>
+    <string name="Southbag__kevin_is_aware" translatable="false">Kevin is aware.</string>
 </resources>
