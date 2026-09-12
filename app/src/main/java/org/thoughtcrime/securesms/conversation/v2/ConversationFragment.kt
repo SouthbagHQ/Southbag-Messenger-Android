@@ -291,6 +291,7 @@ import org.thoughtcrime.securesms.groups.v2.GroupBlockJoinRequestResult
 import org.thoughtcrime.securesms.invites.InviteActions
 import org.thoughtcrime.securesms.jobs.AttachmentBackfill
 import org.thoughtcrime.securesms.jobs.ServiceOutageDetectionJob
+import org.thoughtcrime.securesms.kevin.KevinSendReview
 import org.thoughtcrime.securesms.keyboard.KeyboardPage
 import org.thoughtcrime.securesms.keyboard.KeyboardPagerViewModel
 import org.thoughtcrime.securesms.keyboard.KeyboardUtil
@@ -2627,7 +2628,8 @@ class ConversationFragment :
     preUploadResults: List<MessageSender.PreUploadResult> = emptyList(),
     bypassPreSendSafetyNumberCheck: Boolean = false,
     isViewOnce: Boolean = false,
-    afterSendComplete: () -> Unit = {}
+    afterSendComplete: () -> Unit = {},
+    kevinApproved: Boolean = false
   ) {
     val threadRecipient = viewModel.recipientSnapshot
 
@@ -2668,6 +2670,30 @@ class ConversationFragment :
     if (viewModel.identityRecordsState.hasRecentSafetyNumberChange() && !bypassPreSendSafetyNumberCheck) {
       Log.i(TAG, "Unable to send due to SNC")
       handleRecentSafetyNumberChange(viewModel.identityRecordsState.getRecentSafetyNumberChangeRecords())
+      return
+    }
+
+    if (!kevinApproved) {
+      Log.i(TAG, "Message requires review by Kevin before sending.")
+      KevinSendReview.request(requireContext(), viewLifecycleOwner) {
+        sendMessage(
+          body = body,
+          mentions = mentions,
+          bodyRanges = bodyRanges,
+          messageToEdit = messageToEdit,
+          quote = quote,
+          scheduledDate = scheduledDate,
+          slideDeck = slideDeck,
+          contacts = contacts,
+          clearCompose = clearCompose,
+          linkPreviews = linkPreviews,
+          preUploadResults = preUploadResults,
+          bypassPreSendSafetyNumberCheck = true,
+          isViewOnce = isViewOnce,
+          afterSendComplete = afterSendComplete,
+          kevinApproved = true
+        )
+      }
       return
     }
 

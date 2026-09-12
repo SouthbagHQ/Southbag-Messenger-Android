@@ -174,6 +174,7 @@ private fun PrimaryActionButton(
     when (destination) {
       MainListRoute.Archive -> onNewChatClick
       MainListRoute.Chats -> onNewChatClick
+      MainListRoute.Reload -> onNewChatClick
       MainListRoute.Calls -> onNewCallClick
       MainListRoute.Stories -> {
         { onCameraClick(destination) }
@@ -189,6 +190,7 @@ private fun PrimaryActionButton(
         val (icon, contentDescriptionId) = when (targetState) {
           MainListRoute.Archive -> CoreUiR.drawable.symbol_edit_24 to R.string.conversation_list_fragment__fab_content_description
           MainListRoute.Chats -> CoreUiR.drawable.symbol_edit_24 to R.string.conversation_list_fragment__fab_content_description
+          MainListRoute.Reload -> CoreUiR.drawable.symbol_edit_24 to R.string.conversation_list_fragment__fab_content_description
           MainListRoute.Calls -> R.drawable.symbol_phone_plus_24 to R.string.CallLogFragment__start_a_new_call
           MainListRoute.Stories -> CoreUiR.drawable.symbol_camera_24 to R.string.conversation_list_fragment__open_camera_description
         }
