@@ -3,7 +3,7 @@
     <!-- RegistrationLockV2Dialog -->
     <string name="RegistrationLockV2Dialog_turn_on_registration_lock">Turn on Registration Lock?</string>
     <string name="RegistrationLockV2Dialog_turn_off_registration_lock">Turn off Registration Lock?</string>
-    <string name="RegistrationLockV2Dialog_if_you_forget_your_signal_pin_when_registering_again">If you forget your Signal PIN when registering with Signal again, you’ll be locked out of your account for 7 days.</string>
+    <string name="RegistrationLockV2Dialog_if_you_forget_your_signal_pin_when_registering_again">If you forget your Southbag PIN when registering with Southbag Messenger again, you’ll be locked out of your account for 7 days.</string>
     <string name="RegistrationLockV2Dialog_turn_on">Turn on</string>
     <string name="RegistrationLockV2Dialog_turn_off">Turn off</string>
     <string name="preferences__advanced_pin_settings">Advanced PIN settings</string>
@@ -12,20 +12,20 @@
     <string name="RegistrationLockFragment__switch_keyboard">Switch keyboard</string>
     <string name="preferences_chats__transfer_account">Transfer account</string>
     <string name="preferences_chats__transfer_account_to_a_new_android_device">Transfer account to a new Android device</string>
-    <string name="preferences_app_protection__signal_pin">Signal PIN</string>
+    <string name="preferences_app_protection__signal_pin">Southbag PIN</string>
     <string name="preferences_app_protection__create_a_pin">Create a PIN</string>
     <string name="preferences_app_protection__change_your_pin">Change your PIN</string>
     <string name="preferences_app_protection__pin_reminders">PIN reminders</string>
     <string name="preferences_app_protection__turn_off">Turn off</string>
     <string name="preferences_app_protection__confirm_pin">Confirm PIN</string>
-    <string name="preferences_app_protection__confirm_your_signal_pin">Confirm your Signal PIN</string>
-    <string name="preferences_app_protection__make_sure_you_memorize_or_securely_store_your_pin">Make sure you memorize or securely store your PIN as it can\'t be recovered. If you forget your PIN, you may lose data when re-registering your Signal account.</string>
+    <string name="preferences_app_protection__confirm_your_signal_pin">Confirm your Southbag PIN</string>
+    <string name="preferences_app_protection__make_sure_you_memorize_or_securely_store_your_pin">Make sure you memorize or securely store your PIN as it can\'t be recovered. If you forget your PIN, you may lose data when re-registering your Southbag Messenger account.</string>
     <string name="preferences_app_protection__incorrect_pin_try_again">Incorrect PIN. Try again.</string>
     <string name="preferences_app_protection__registration_lock">Registration Lock</string>
     <!-- Option in settings that will take use to re-register if they are no longer registered -->
     <string name="preferences_account_reregister">Re-register account</string>
     <!-- Option in settings that will take user to our website or playstore to update their expired build -->
-    <string name="preferences_account_update_signal">Update Signal</string>
+    <string name="preferences_account_update_signal">Update Southbag Messenger</string>
     <!-- Option in settings shown when user is no longer registered or expired client that will WIPE ALL THEIR DATA -->
     <string name="preferences_account_delete_all_data">Delete all data</string>
     <!-- Title for confirmation dialog confirming user wants to delete all their data -->
@@ -35,21 +35,21 @@
     <!-- Confirmation action to proceed with application data deletion -->
     <string name="preferences_account_delete_all_data_confirmation_proceed">Proceed</string>
     <!-- Confirmation action to cancel application data deletion -->
-    <string name="preferences_account_delete_all_data_confirmation_cancel">Cancel</string>
+    <string name="preferences_account_delete_all_data_confirmation_cancel">Cancel (fee applies)</string>
 
     <!-- AccountSettingsFragment -->
     <string name="AccountSettingsFragment__account">Account</string>
     <string name="AccountSettingsFragment__youll_be_asked_less_frequently">You\'ll be asked less frequently over time</string>
-    <string name="AccountSettingsFragment__require_your_signal_pin">Require your Signal PIN to register your phone number with Signal again</string>
+    <string name="AccountSettingsFragment__require_your_signal_pin">Require your Southbag PIN to register your phone number with Southbag Messenger again</string>
     <string name="AccountSettingsFragment__change_phone_number">Change phone number</string>
     <!-- Account setting that allows user to request and export their signal account data -->
     <string name="AccountSettingsFragment__request_account_data">Your account data</string>
     <!-- Section header for the Signal Login section of account settings -->
-    <string name="AccountSettingsFragment__signal_login">Signal Login</string>
+    <string name="AccountSettingsFragment__signal_login">Southbag Messenger Login</string>
     <!-- Title of the card that opens the user\'s Signal Login account and recovery keys -->
     <string name="AccountSettingsFragment__account_and_recovery">Account &amp; recovery</string>
     <!-- Description of what a Signal Login is, shown below the Signal Login card -->
-    <string name="AccountSettingsFragment__your_signal_login_is_used_to_recover">Your Signal Login is used to recover and restore your account. Keep these keys stored safely in a password manager you trust.</string>
+    <string name="AccountSettingsFragment__your_signal_login_is_used_to_recover">Your Southbag Messenger Login is used to recover and restore your account. Keep these keys stored safely in a password manager you trust.</string>
     <!-- Section header for the two-factor authentication section of account settings -->
     <string name="AccountSettingsFragment__two_factor_authentication">Two-factor authentication</string>
     <!-- Row that opens the menu of second factors the user can add -->
@@ -77,9 +77,9 @@
     <!-- Title of the sheet explaining that the device screen lock is needed before a two-factor authentication method can be removed -->
     <string name="AccountSettingsFragment__to_remove_this_method_confirm_its_you">To remove this method, confirm it\'s you</string>
     <!-- Title of the device screen lock prompt shown before the Signal Login details can be viewed -->
-    <string name="AccountSettingsFragment__unlock_to_view_signal_login">Unlock to view Signal Login</string>
+    <string name="AccountSettingsFragment__unlock_to_view_signal_login">Unlock to view Southbag Messenger Login</string>
     <!-- Title of the sheet explaining that the device screen lock is needed before the Signal Login details can be viewed -->
-    <string name="AccountSettingsFragment__to_view_your_signal_login_confirm_its_you">To view your Signal Login, confirm it\'s you</string>
+    <string name="AccountSettingsFragment__to_view_your_signal_login_confirm_its_you">To view your Southbag Messenger Login, confirm it\'s you</string>
     <!-- Toast shown when the device screen lock wasn\'t confirmed, so nothing happened -->
     <string name="AccountSettingsFragment__authentication_required">Authentication required</string>
     <!-- Title of the dialog shown when the account already has as many authenticator apps as it\'s allowed -->
@@ -87,15 +87,15 @@
     <!-- Body of the dialog shown when the account already has as many authenticator apps as it\'s allowed -->
     <string name="AccountSettingsFragment__you_cant_add_more_than_d">You can\'t add more than %1$d authenticator apps. Try removing one first.</string>
     <!-- Shown in place of the list when we couldn\'t work out which second factors are on the account -->
-    <string name="AccountSettingsFragment__couldnt_load_your_two_factor_methods">Couldn\'t load your two-factor authentication methods. Check your connection and try again.</string>
+    <string name="AccountSettingsFragment__couldnt_load_your_two_factor_methods">Couldn\'t load your two-factor authentication methods. Check your connection and try again. Kevin is watching.</string>
     <!-- Toast shown after an authenticator app has been removed -->
     <string name="AccountSettingsFragment__authenticator_app_removed">Authenticator app removed</string>
     <!-- Toast shown when an authenticator app couldn\'t be removed -->
-    <string name="AccountSettingsFragment__couldnt_remove_authenticator_app">Couldn\'t remove authenticator app. Check your connection and try again.</string>
+    <string name="AccountSettingsFragment__couldnt_remove_authenticator_app">Couldn\'t remove authenticator app. Check your connection and try again. Kevin is watching.</string>
     <!-- Description of two-factor authentication, shown below the two-factor authentication list -->
-    <string name="AccountSettingsFragment__use_a_second_form_of_authentication">Use a second form of authentication to protect your account when using your Signal Login on a new device.</string>
+    <string name="AccountSettingsFragment__use_a_second_form_of_authentication">Use a second form of authentication to protect your account when using your Southbag Messenger Login on a new device.</string>
     <!-- Clickable text that takes the user to a support article -->
-    <string name="AccountSettingsFragment__learn_more">Learn more</string>
+    <string name="AccountSettingsFragment__learn_more">Read the manual (there is no manual)</string>
 
     <!-- TotpSetupScreen -->
     <!-- Title of the screen that walks the user through setting up an authenticator app -->
@@ -103,7 +103,7 @@
     <!-- Instructions shown at the top of the authenticator app setup screen -->
     <string name="TotpSetupScreen__follow_these_steps">Follow these steps to set up your authenticator app.</string>
     <!-- Clickable text that takes the user to a support article -->
-    <string name="TotpSetupScreen__learn_more">Learn more</string>
+    <string name="TotpSetupScreen__learn_more">Read the manual (there is no manual)</string>
     <!-- Header of the first step of authenticator app setup -->
     <string name="TotpSetupScreen__step_1">Step 1</string>
     <!-- Body of the first step of authenticator app setup -->
@@ -111,7 +111,7 @@
     <!-- Header of the second step of authenticator app setup -->
     <string name="TotpSetupScreen__step_2">Step 2</string>
     <!-- Body of the second step of authenticator app setup -->
-    <string name="TotpSetupScreen__open_your_authenticator_app">Open your authenticator app by tapping the button below to add your Signal account.</string>
+    <string name="TotpSetupScreen__open_your_authenticator_app">Open your authenticator app by tapping the button below to add your Southbag Messenger account.</string>
     <!-- Button that opens the user\'s authenticator app -->
     <string name="TotpSetupScreen__open">Open</string>
     <!-- Text above the setup key explaining that it can be entered by hand instead -->
@@ -125,13 +125,13 @@
     <!-- Dialog message shown when the account already has as many authenticator apps as it\'s allowed -->
     <string name="TotpSetupScreen__you_cant_add_more_than_d">You can\'t add more than %1$d authenticator apps. Try removing one first.</string>
     <!-- Dialog message shown when we couldn\'t reach the service to start setting up an authenticator app -->
-    <string name="TotpSetupScreen__couldnt_reach_signal">Couldn\'t reach Signal. Check your connection and try again.</string>
+    <string name="TotpSetupScreen__couldnt_reach_signal">Couldn\'t reach Southbag Messenger. Check your connection and try again. Kevin is watching.</string>
     <!-- Header of the third step of authenticator app setup -->
     <string name="TotpSetupScreen__step_3">Step 3</string>
     <!-- Body of the third step of authenticator app setup -->
     <string name="TotpSetupScreen__copy_the_code_thats_generated">Copy the code that\'s generated and return here to continue.</string>
     <!-- Button that advances from the setup instructions to entering a code -->
-    <string name="TotpSetupScreen__continue">Continue</string>
+    <string name="TotpSetupScreen__continue">Continue (fee applies)</string>
 
     <!-- TotpCodeEntryScreen -->
     <!-- Title of the screen where the user enters the code from their authenticator app -->
@@ -141,11 +141,11 @@
     <!-- Label of the code entry field -->
     <string name="TotpCodeEntryScreen__code">Code</string>
     <!-- Button that submits the entered code -->
-    <string name="TotpCodeEntryScreen__done">Done</string>
+    <string name="TotpCodeEntryScreen__done">Done. Kevin is reviewing.</string>
     <!-- Error shown under the code field when the code the user entered was rejected -->
     <string name="TotpCodeEntryScreen__incorrect_code">Incorrect code. Enter the code showing in your authenticator app now.</string>
     <!-- Error shown under the code field when we couldn\'t reach the service to check the code -->
-    <string name="TotpCodeEntryScreen__couldnt_reach_signal">Couldn\'t reach Signal. Check your connection and try again.</string>
+    <string name="TotpCodeEntryScreen__couldnt_reach_signal">Couldn\'t reach Southbag Messenger. Check your connection and try again. Kevin is watching.</string>
     <!-- TotpNameEntryScreen -->
     <!-- Title of the screen where the user names an authenticator app -->
     <string name="TotpNameEntryScreen__choose_a_name">Choose a name</string>
@@ -156,11 +156,11 @@
     <!-- Label of the name field -->
     <string name="TotpNameEntryScreen__name">Name</string>
     <!-- Button that submits the entered name -->
-    <string name="TotpNameEntryScreen__next">Next</string>
+    <string name="TotpNameEntryScreen__next">Next (please allow 2-5 business minutes)</string>
     <!-- Toast shown after an authenticator app has been successfully set up -->
     <string name="TotpNameEntryScreen__authenticator_app_set_up">Authenticator app set up</string>
     <!-- Toast shown after an authenticator app has been renamed -->
     <string name="TotpNameEntryScreen__authenticator_app_renamed">Authenticator app renamed</string>
     <!-- Toast shown when we couldn\'t reach the service to save the name -->
-    <string name="TotpNameEntryScreen__couldnt_save_name">Couldn\'t save name. Check your connection and try again.</string>
+    <string name="TotpNameEntryScreen__couldnt_save_name">Couldn\'t save name. Check your connection and try again. Kevin is watching.</string>
 </resources>

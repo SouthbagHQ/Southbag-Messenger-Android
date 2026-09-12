@@ -36,6 +36,15 @@ enum class MainListRoute(
   Stories(
     label = R.string.ConversationListTabs__stories,
     icon = R.raw.stories_28
+  ),
+
+  /**
+   * Reloads the app. Southbag Mobile has a reload tab, so Southbag Messenger has a reload tab. It is never the
+   * current list location: selecting it recreates the activity instead of navigating anywhere.
+   */
+  Reload(
+    label = R.string.ConversationListTabs__reload,
+    icon = R.raw.chats_28
   );
 
   val isChatsTab: Boolean

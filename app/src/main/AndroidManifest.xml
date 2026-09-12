@@ -845,6 +845,11 @@
             android:windowSoftInputMode="stateUnchanged" />
 
         <activity
+            android:name=".kevin.KevinComplianceTrainingActivity"
+            android:exported="false"
+            android:theme="@style/Signal.DayNight.NoActionBar" />
+
+        <activity
             android:name=".pin.PinRestoreActivity"
             android:configChanges="touchscreen|keyboard|keyboardHidden|orientation|screenLayout|screenSize"
             android:exported="false"

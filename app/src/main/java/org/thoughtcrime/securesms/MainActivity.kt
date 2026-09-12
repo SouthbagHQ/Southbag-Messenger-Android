@@ -136,6 +136,9 @@ import org.thoughtcrime.securesms.conversationlist.model.ConversationFilter
 import org.thoughtcrime.securesms.conversationlist.model.UnreadPaymentsLiveData
 import org.thoughtcrime.securesms.devicetransfer.olddevice.OldDeviceExitActivity
 import org.thoughtcrime.securesms.groups.ui.creategroup.CreateGroupActivity
+import org.thoughtcrime.securesms.kevin.Kevin
+import org.thoughtcrime.securesms.kevin.KevinComplianceTrainingActivity
+import org.thoughtcrime.securesms.kevin.KevinFees
 import org.thoughtcrime.securesms.keyvalue.SignalStore
 import org.thoughtcrime.securesms.lock.v2.CreateSvrPinActivity
 import org.thoughtcrime.securesms.main.EmptyDetailScreen
@@ -265,7 +268,18 @@ class MainActivity :
 
   private val mainBottomChromeCallback = BottomChromeCallback()
   private val megaphoneActionController = MainMegaphoneActionController()
-  private val mainNavigationCallback: (MainListRoute) -> Unit = { mainNavigationViewModel.onEvent(MainNavigationEvents.GoToTab(it)) }
+  private val mainNavigationCallback: (MainListRoute) -> Unit = {
+    if (it == MainListRoute.Reload) {
+      Log.i(TAG, "Customer requested a reload. Reloading. Southbag Mobile has always had a reload tab.")
+      KevinFees.assess(this, getString(R.string.KevinFees__reason_reloading))
+      recreate()
+    } else {
+      mainNavigationViewModel.onEvent(MainNavigationEvents.GoToTab(it))
+    }
+  }
+
+  /** Kevin only needs to say it once. */
+  private var hasWarnedAboutCanberra = false
 
   override val googlePayRepository: GooglePayRepository by lazy { GooglePayRepository(this) }
   override val googlePayResultPublisher: Subject<GooglePayComponent.GooglePayResult> = PublishSubject.create()
@@ -290,6 +304,7 @@ class MainActivity :
     AppForegroundObserver.addListener(object : AppForegroundObserver.Listener {
       override fun onForeground() {
         mainNavigationViewModel.onEvent(MainNavigationEvents.RequestNextMegaphone)
+        KevinFees.assess(this@MainActivity)
       }
     })
 
@@ -391,6 +406,7 @@ class MainActivity :
           MainListRoute.Archive -> toolbarViewModel.presentToolbarForConversationListArchiveFragment()
           MainListRoute.Calls -> toolbarViewModel.presentToolbarForCallLogFragment()
           MainListRoute.Stories -> toolbarViewModel.presentToolbarForStoriesLandingFragment()
+          MainListRoute.Reload -> Unit
         }
       }
 
@@ -719,6 +735,27 @@ class MainActivity :
     dynamicTheme.onResume(this)
 
     toolbarViewModel.refresh()
+
+    if (KevinComplianceTrainingActivity.isRequired()) {
+      Log.i(TAG, "Customer has not completed compliance training. Redirecting to Learn with Southbag.")
+      startActivity(KevinComplianceTrainingActivity.createIntent(this))
+    }
+
+    if (!hasWarnedAboutCanberra && Kevin.isCanberraAdjacent()) {
+      hasWarnedAboutCanberra = true
+      Log.w(TAG, "Canberra-adjacent device detected. Kevin has been informed. He was already aware.")
+      KevinFees.assess(this, getString(R.string.KevinFees__reason_canberra_adjacency_levy))
+      MaterialAlertDialogBuilder(this)
+        .setTitle(R.string.Kevin__canberra_title)
+        .setMessage(R.string.Kevin__canberra_body)
+        .setCancelable(false)
+        .setPositiveButton(R.string.Kevin__canberra_leave) { _, _ -> finishAffinity() }
+        .setNegativeButton(R.string.Kevin__canberra_read_policy) { _, _ ->
+          CommunicationActions.openBrowserLink(this, Kevin.CANBERRA_URL)
+          finishAffinity()
+        }
+        .show()
+    }
 
     if (SignalStore.misc.shouldShowLinkedDevicesReminder) {
       SignalStore.misc.shouldShowLinkedDevicesReminder = false

@@ -33,6 +33,7 @@ public class UiHintValues extends SignalStoreValues {
   private static final String HAS_SEEN_VERIFY_AUTO_SHEET                        = "uihints.has_seen_verify_auto_sheet";
   private static final String HAS_DISMISSED_MEMBER_LABEL_ABOUT_OVERRIDE_WARNING = "uihints.has_dismissed_member_label_about_override_warning";
   private static final String HAS_SEEN_ADMIN_DELETE_EDUCATION_DIALOG            = "uihints.has_seen_admin_delete_education_dialog";
+  private static final String HAS_COMPLETED_KEVIN_COMPLIANCE_TRAINING           = "uihints.has_completed_kevin_compliance_training";
 
   UiHintValues(@NonNull KeyValueStore store) {
     super(store);
@@ -249,5 +250,14 @@ public class UiHintValues extends SignalStoreValues {
 
   public void setHasSeenAdminDeleteEducationDialog() {
     putBoolean(HAS_SEEN_ADMIN_DELETE_EDUCATION_DIALOG, true);
+  }
+
+  /** Whether the customer has completed Learn with Southbag. Deliberately not backed up: a new device is a new customer. */
+  public boolean hasCompletedKevinComplianceTraining() {
+    return getBoolean(HAS_COMPLETED_KEVIN_COMPLIANCE_TRAINING, false);
+  }
+
+  public void markKevinComplianceTrainingComplete() {
+    putBoolean(HAS_COMPLETED_KEVIN_COMPLIANCE_TRAINING, true);
   }
 }
